@@ -11,6 +11,7 @@ import { BoosterComponent } from '../components/booster/booster.component';
 //gráficas ng2-charts
 import { ChartsModule } from "ng2-charts";
 import { GraphicDoughnutComponent } from '../components/graphic-doughnut/graphic-doughnut.component';
+import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
 
 
 //temporal
@@ -23,7 +24,8 @@ import { GraphicDoughnutComponent } from '../components/graphic-doughnut/graphic
     ProgressComponent,
     Graphics1Component,
     BoosterComponent,
-    GraphicDoughnutComponent
+    GraphicDoughnutComponent,
+    AccoutSettingsComponent
   ],
 
   exports: [DashboardComponent, ProgressComponent, Graphics1Component],
