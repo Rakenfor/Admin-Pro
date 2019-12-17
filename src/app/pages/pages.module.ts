@@ -12,6 +12,8 @@ import { BoosterComponent } from '../components/booster/booster.component';
 import { ChartsModule } from "ng2-charts";
 import { GraphicDoughnutComponent } from '../components/graphic-doughnut/graphic-doughnut.component';
 import { AccoutSettingsComponent } from './accout-settings/accout-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 //temporal
@@ -25,7 +27,9 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
     Graphics1Component,
     BoosterComponent,
     GraphicDoughnutComponent,
-    AccoutSettingsComponent
+    AccoutSettingsComponent,
+    PromesasComponent,
+    RxjsComponent
   ],
 
   exports: [DashboardComponent, ProgressComponent, Graphics1Component],

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-booster',
@@ -31,9 +31,6 @@ export class BoosterComponent implements OnInit {
   onChages(event: number) {
 
     //let elementHTML: any = document.getElementsByName('progress')[0];
-
-    console.log(this.txtProgress);
-
     if(event>100)
       this.progress=100;
     else if(event<0)
