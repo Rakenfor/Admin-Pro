@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-booster',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild }
 })
 export class BoosterComponent implements OnInit {
 
-  @ViewChild('txtProgress') txtProgress: ElementRef;
+  @ViewChild('txtProgress', {static: true}) txtProgress: ElementRef;
 
   //pasar valores a este como hijo
   @Input() legend: string ='Legend';

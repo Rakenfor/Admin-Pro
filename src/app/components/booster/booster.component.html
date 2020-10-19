@@ -3,8 +3,8 @@
     <div class="input-group-prepend" id="button-addon3">
         <button class="btn btn-primary" (click)="cambiarValor(-5)" type="button"><i class="mdi mdi-minus"></i></button>
     </div>
-    <input #txtProgress type="number" class="form-control" value="{{progress}}" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3" name="progress" [(ngModel)]="progress" (ngModelChange)="onChages($event)" min="0"
-        max="100">
+    <input #txtProgress id="txtProgress" type="number" class="form-control" value="{{progress}}" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3" name="progress" [(ngModel)]="progress" (ngModelChange)="onChages($event)"
+        min="0" max="100">
     <div class="input-group-prepend" id="button-addon3">
         <button class="btn btn-primary" (click)="cambiarValor(5)" type="button"><i class="mdi mdi-plus"></i></button>
     </div>

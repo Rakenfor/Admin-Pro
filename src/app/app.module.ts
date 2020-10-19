@@ -13,7 +13,8 @@ import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     PagesModule,
     //temporal
     FormsModule,
-    ServiceModule
+    ReactiveFormsModule,
+    ServiceModule,
   ],
   bootstrap: [AppComponent]
 })
