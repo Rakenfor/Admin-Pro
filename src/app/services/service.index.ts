@@ -1,5 +1,4 @@
-import { from } from 'rxjs';
-
+export { UploadService } from './upload/upload.service';
 export { UserService } from './user/user.service';
 export { SettingsService } from "./settings/settings.service";
 export { SharedService } from "./shared/shared.service";

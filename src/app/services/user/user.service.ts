@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user.model';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { URL_SERVICES } from '../../config/config';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { UploadService } from '../upload/upload.service';
+import * as swal from 'sweetalert';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,12 @@ import { Router } from '@angular/router';
 export class UserService {
 
   user: User;
-  token: String;
+  token: string='';
 
   constructor(
     public http: HttpClient,
-    public router: Router
+    public router: Router,
+    public uploadServices: UploadService
   ) { 
 
     
@@ -47,13 +50,8 @@ export class UserService {
 
     return this.http.post(url, user)
                     .pipe(map((resp: any)=>{
-                      localStorage.setItem('id', resp.user._id)
-                      localStorage.setItem('token', resp.token)
-                      localStorage.setItem('user', JSON.stringify(resp.user));
+                      this.saveStorage(resp);
                       
-                      user = resp.user;
-                      this.token = resp.token;
-
                       return true;
                     }));
 
@@ -74,4 +72,40 @@ export class UserService {
   stateLoged(){
     return this.token.length > 30  ? true : false;
   }
+
+
+  updateUser(user: User){
+    let url = URL_SERVICES+'/users/'+user._id;
+
+    return this.http.put(url, user, {headers: {'token':this.token}})
+                    .pipe(map((resp: any)=>{
+                      this.saveStorage(resp)
+                      return true;
+                    }));
+  }
+
+  saveStorage(resp){
+    localStorage.setItem('id', resp.user._id)                  
+
+                      if(resp.token!=undefined){
+                        this.token = resp.token;
+                        localStorage.setItem('token', resp.token)
+                      }
+                      
+                      this.user = resp.user;
+                      localStorage.setItem('user', JSON.stringify(resp.user));
+  }
+
+  updateImage(file: File, id: string){
+    this.uploadServices.uploadFile(file, 'user', id, this.token)
+                      .then((resp: any)=>{
+                        
+                        this.saveStorage(JSON.parse(resp));
+                        swal.default('Imagen actualizada', this.user.name,'success')
+                      })
+                      .catch(resp=>{
+                        console.log(JSON.parse(resp));
+                      });
+  }
+
 }

@@ -7,6 +7,8 @@ import { AccoutSettingsComponent } from './accout-settings/accout-settings.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuard } from '../services/guards/login.guard';
+import { PerfilComponent } from './perfil/perfil.component';
+import { Title } from '@angular/platform-browser';
 
 const pagesRouts: Routes = [
   {
@@ -20,6 +22,7 @@ const pagesRouts: Routes = [
       { path: 'promesas', component: PromesasComponent, data: { title: 'Promesas' }},
       { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' }},
       { path: 'account-settings', component: AccoutSettingsComponent, data: { title: 'Acount Settings' }},
+      { path: 'perfil', component: PerfilComponent, data: {Title: 'Perfil de usuario'}},
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },]
   },
 
