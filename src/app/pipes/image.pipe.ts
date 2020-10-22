@@ -10,8 +10,6 @@ export class ImagePipe implements PipeTransform {
 
     let url = URL_SERVICES+'/image';
 
-    console.log(image);
-
     if(!image){
       return url+'/users/xxx'
     }
@@ -21,8 +19,6 @@ export class ImagePipe implements PipeTransform {
     }
 
     url += `/${type}/${image}`;
-
-    console.group('url');
 
     return url;
   }

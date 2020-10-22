@@ -17,6 +17,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CommonModule } from '@angular/common';
+import { UserComponent } from './user/user.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 
 //temporal
@@ -33,7 +35,9 @@ import { CommonModule } from '@angular/common';
     AccoutSettingsComponent,
     PromesasComponent,
     RxjsComponent,
-    PerfilComponent
+    PerfilComponent,
+    UserComponent,
+    ModalUploadComponent
   ],
 
   exports: [

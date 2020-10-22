@@ -68,21 +68,54 @@ export class UserService {
     this.router.navigate(['/login']);
 
   }
+  
+  //Usuarios
+  //Cargar usuarios
+  getUsers(skip: number, limit: number = 5){
+    
+    let url = URL_SERVICES + `/users?skip=${skip}&limit=${limit}`;
+    
+    return this.http.get(url, { headers: { 'token': this.token }} );
+    
+  }
+  
+  //Buscar usuarios
+  searchUser(item: string){
 
+    let url = URL_SERVICES + `/search/collections/users/${item}`;
+    return this.http.get(url);
+
+  }
+
+  //estado de logeado
   stateLoged(){
     return this.token.length > 30  ? true : false;
   }
 
 
+  //Actualiar usuario 
   updateUser(user: User){
     let url = URL_SERVICES+'/users/'+user._id;
 
     return this.http.put(url, user, {headers: {'token':this.token}})
                     .pipe(map((resp: any)=>{
-                      this.saveStorage(resp)
-                      return true;
+
+                      if(user._id === resp.user._id){
+                        this.saveStorage(resp)
+                      }
+                      return resp;
                     }));
   }
+
+  //borrar usuario
+  removeUser(id: string){
+
+    let url = URL_SERVICES+'/users/'+id;
+
+    return this.http.delete(url, { headers: { 'token': this.token } } );
+
+  }
+
 
   saveStorage(resp){
     localStorage.setItem('id', resp.user._id)                  
@@ -96,6 +129,7 @@ export class UserService {
                       localStorage.setItem('user', JSON.stringify(resp.user));
   }
 
+  //actualizar usuario
   updateImage(file: File, id: string){
     this.uploadServices.uploadFile(file, 'user', id, this.token)
                       .then((resp: any)=>{
@@ -107,5 +141,6 @@ export class UserService {
                         console.log(JSON.parse(resp));
                       });
   }
+
 
 }
