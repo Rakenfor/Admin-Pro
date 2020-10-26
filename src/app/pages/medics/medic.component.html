@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0" _msthash="1625676" _msttexthash="767052">Médico: {{medic.name}}</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form ngNativeValidate #f="ngForm" (ngSubmit)="saveMedic(f)">
+                        <div class="form-group">
+                            <label>Ingrese el nombre</label>
+                            <input [ngModel]="medic.name" name="medic" type="text" class="form-control" placeholder="nombre del médico" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hospital</label>
+                            <select (change)="cambioHospital($event)" required ngModel name="hospital" class="form-control" required>
+                                <option value=""> seleccione un hospital </option>
+                                <option *ngFor="let hospital of hospitals"  [value]="hospital._id ">  {{ hospital.name }} </option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" _msthash="3496987" _msttexthash="76830">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                        <button routerLink="/medics" type="submit" class="btn btn-inverse waves-effect waves-light" _msthash="3498001" _msttexthash="110357">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0" _msthash="1625676" _msttexthash="767052">hospital: {{ hospital.name }}</h4>
+            <img class="w150" src="{{ hospital.img | image: 'hospital'}}" alt="">
+        </div>
+    </div>
+
+    <div class="col-md-3" *ngIf="medic._id">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0" _msthash="1625676" _msttexthash="767052">Médico: {{ medic.name }} </h4>
+            <img class="w150" src="{{ medic.img | image: 'medic' }}" alt="">
+
+            <br>
+            <button (click)="chagePotho()" type="submit" class="btn btn-inverse waves-effect waves-light" _msthash="3498001" _msttexthash="110357">Cambiar Foto</button>
+        </div>
+    </div>
+</div>

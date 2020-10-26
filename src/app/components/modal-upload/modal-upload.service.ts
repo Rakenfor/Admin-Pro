@@ -12,9 +12,9 @@ export class ModalUploadService {
 
   public notify = new EventEmitter<any>();
 
-  constructor() { 
-    console.log('Modal upload listo (servicio)');
-  }
+  constructor() {
+
+ }
 
   ocultarModal(){
     this.type = null;

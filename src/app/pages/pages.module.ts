@@ -19,6 +19,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user/user.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { MedicsComponent } from './medics/medics.component';
+import { MedicComponent } from './medics/medic.component';
 
 
 //temporal
@@ -37,7 +40,10 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
     RxjsComponent,
     PerfilComponent,
     UserComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    HospitalsComponent,
+    MedicsComponent,
+    MedicComponent
   ],
 
   exports: [
@@ -49,7 +55,8 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
     CommonModule,
     SharedModule, 
     PAGES_ROUTES, 
-    FormsModule, 
+    FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     PipesModule,
     ReactiveFormsModule

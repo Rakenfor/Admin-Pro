@@ -28,6 +28,9 @@ export class UserComponent implements OnInit {
     this.modalUploadService.notify
                           .subscribe((resp: any ) => {
                             resp = JSON.parse(resp)
+                            if(!resp.user){
+                              return;
+                            }
                             this.users.forEach(user=>{
                               if(user._id === resp.user._id){
                                 user.img = resp.user.img;

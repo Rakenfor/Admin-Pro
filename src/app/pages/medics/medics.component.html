@@ -1,0 +1,97 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="searchMedic(input.value)" type="text" name="" class="form-control" placeholder="Buscar usuarios">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="header">
+                    <div class="header-left">
+                        <h4>Hospitales <span>({{ total }})</span></h4>
+                    </div>
+                    <div class="header-rigth">
+                        <button [routerLink]="['/medics','nuevo']" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Crear un médico
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medic of medics">
+                            <td class="w70">
+                                <img (click)="updateImage(medic)" src="{{ medic.img | image: 'medic' }}" alt="" class="img-50 img-circle">
+                            </td>
+                            <td class="w100">
+                                <input type="text" name="" class="form-control" placeholder="Ingrese elnombre del nuevo hospital" [(ngModel)]="medic.name">
+                            </td>
+                            <td class="w100">
+                                <input type="text" name="" class="form-control" placeholder="Ingrese elnombre del nuevo hospital" [(ngModel)]="medic.hospital.name">
+                            </td>
+                            <td>
+                                <button [routerLink]="['/medics',medic._id]" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button (click)="removeMedic(medic)" class="sep btn btn-danger">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add-hospital" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nuevo Hospital</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <label for=""></label>
+                <input #nombreHospital type="text" name="" class="form-control" placeholder="Ingrese elnombre del nuevo hospital">
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="addMedic()" data-dismiss="modal" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Canselar</button>
+            </div>
+        </div>
+    </div>
+</div>
