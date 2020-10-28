@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  URL_SERVICES: 'https://dsadminpro.herokuapp.com'
 };

@@ -1,1 +1,2 @@
-export const URL_SERVICES = 'http://localhost:3000';
+import { environment } from "../../environments/environment";
+export const URL_SERVICES = environment.URL_SERVICES;

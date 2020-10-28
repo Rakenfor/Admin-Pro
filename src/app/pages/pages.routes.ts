@@ -16,11 +16,6 @@ import { SearchComponent } from './search/search.component';
 import { AdminGuard } from '../services/guards/admin.guard';
 
 const pagesRouts: Routes = [
-  {
-    path: '',
-    component: PagesComponent,
-    canActivate: [LoginGuard],
-    children: [
       { path: 'dashboard', component: DashboardComponent, data: {title:'DashBoard'} },
       { path: 'progress', component: ProgressComponent, data: { title: 'Progress' } },
       { path: 'graphics1', component: Graphics1Component, data: { title: 'Graphics' } },
@@ -36,9 +31,6 @@ const pagesRouts: Routes = [
       { path: 'hospitals', component: HospitalsComponent, data: { title: 'Matenimiento de hospitales' } },
       { path: 'medics', component: MedicsComponent, data: {title: 'Matenimiento de medicos' } },
       { path: 'medics/:id', component: MedicComponent, data: {title: 'Actualizar medico'} },
-    ]
-  },
-
-]
+];
 
 export const PAGES_ROUTES = RouterModule.forChild(pagesRouts);
